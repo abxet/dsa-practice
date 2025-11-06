@@ -1,4 +1,4 @@
-// Leetcode. Remove Duplicates from Sorted List 
+// Leetcode 82. Remove Duplicates from Sorted List II
 #include<iostream>
 
 using namespace std;
@@ -23,24 +23,41 @@ void printListNode(ListNode* node) {
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        // create a dummy node
+        // create a dummy node 
         ListNode* dummy = new ListNode(0);
         dummy -> next = head;
-        
-        ListNode* curr = dummy;
-        
-        // traverse the linked list 
-        while ( curr != nullptr )
+
+        ListNode* prev = dummy;
+        ListNode* curr = head;
+        bool isDuplicate = false;
+        // traverse through the list 
+        while (curr != nullptr)
         {
-            if((curr -> next != nullptr)&&( curr -> val == curr -> next ->val )) {
-                curr -> next = curr -> next -> next;
+            // duplicate flag 
+            isDuplicate = false;
+            while (curr -> next != nullptr && curr -> val == curr -> next -> val) {
+                // mark duplicate
+                isDuplicate = true;
+                curr = curr -> next;
             }
+            if (isDuplicate)
+            {
+                // remove duplicate
+                prev -> next = curr -> next;
+            }
+            else
+            {
+                // move prev
+                prev = prev -> next;
+            }
+            // move ahead
             curr = curr -> next;
         }
         
-        // return the head
+        // return
         return dummy -> next;
     }
+
 };
 
 int main() {
@@ -51,10 +68,10 @@ int main() {
     ListNode* forth  = new ListNode(3);
     ListNode* fifth  = new ListNode(3);
 
-    first->next = second;
+    first-> next = second;
     second->next = third;
-    third->next = forth;
-    forth->next = fifth;
+    third-> next = forth;
+    forth-> next = fifth;
 
     cout << "Original List:\n";
     printListNode(first);
