@@ -1,0 +1,35 @@
+# Ignore all compiled object and executable files
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+
+# Ignore build and binary directories
+/build/
+/bin/
+/debug/
+/release/
+
+# Ignore temporary or log files
+*.log
+*.tmp
+
+# Ignore IDE-specific files (optional, uncomment as needed)
+
+# VSCode
+#.vscode/
+
+# CLion / JetBrains
+#.idea/
+
+# Visual Studio
+#*.user
+#*.suo
+#*.vcxproj.user
+
+# Mac / Linux system files
+.DS_Store
